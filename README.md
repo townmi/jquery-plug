@@ -12,7 +12,7 @@ just need to include jquery and this dialog plug, it will works.
 by the way, your labels should write like this example.
 
 
-```javascript
+```html
 	<a href="javascript:;" dialogOpen="1">for dialog1</a>
 	<div class="dialog dialog1" dialogBox="1">
 		<i dialogClose="true">close</i>
