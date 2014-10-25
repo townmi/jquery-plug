@@ -33,17 +33,17 @@ jQuery.fn.carouselFade = function (){
 		});
 
 		// 左右切换事件
-		$(this).find('.prev').on($(this).attr('event'), function(){
+		$(this).find('.prev').on($(this).find('.prev').attr('event'), function(){
 			current--;
 			init();
 		});
-		$(this).find('.prev').on($(this).attr('event'), function(){
+		$(this).find('.next').on($(this).find('.next').attr('event'), function(){
 			current++;
 			init();
 		});
 
 		// 序列号联动
-		$(this).find('.car_btn span').on($(this).find('.car_btn').attr('event'), function(){
+		$(this).find('[outlook] span').on($(this).find('[outlook]').attr('event'), function(){
 			current = $(this).index();
 			init();
 		})
@@ -55,8 +55,8 @@ jQuery.fn.carouselFade = function (){
 			$(_this).find('li').removeClass('active').stop().fadeOut(333);
 			$(_this).find('li').eq(current).addClass('active').stop().fadeIn(666);
 
-			$(_this).find('.car_btn span').removeClass('active');
-			$(_this).find('.car_btn span').eq(current).addClass('active');
+			$(_this).find('[outlook] span').removeClass('active');
+			$(_this).find('[outlook] span').eq(current).addClass('active');
 		};
 		function autoRun(){
 			current++;
@@ -79,7 +79,6 @@ jQuery.fn.carouselFade = function (){
 	// 处理图片的失真---background-image
 	function bestImg(){
 		$('*[carouselFade] li a').each(function(){
-			$(this).children().hide();
 			var src = "url("+ $(this).children()[0].src +")";
 			$(this).css({'background-image' : src})
 		})
