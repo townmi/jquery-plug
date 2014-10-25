@@ -12,6 +12,7 @@ jQuery.fn.carouselFade = function (){
 	$('*[carouselFade]').each(function(){
 		// 获取基础数据
 		var len = $(this).find('li').length;
+		var _this = this;
 		var current = 0, timer = null, time = $(this).attr('carouselFade');
 
 		// 初始化
@@ -50,12 +51,12 @@ jQuery.fn.carouselFade = function (){
 		// 切换主程序
 		function init(){
 			current = back(current);
-			$(this).find('li').removeClass('active').stop().hide()
 
-			$(this).find('li').eq(current).addClass('active').stop().fadeIn(600);
+			$(_this).find('li').removeClass('active').stop().fadeOut(333);
+			$(_this).find('li').eq(current).addClass('active').stop().fadeIn(666);
 
-			$(this).find('.car_btn span').removeClass('active');
-			$(this).find('.car_btn span').eq(current).addClass('active');
+			$(_this).find('.car_btn span').removeClass('active');
+			$(_this).find('.car_btn span').eq(current).addClass('active');
 		};
 		function autoRun(){
 			current++;
