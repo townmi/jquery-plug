@@ -6,30 +6,31 @@
  *
  */
 
-jQuery.fn.carouselFade = function (){
+jQuery.fn.carouselPos = function (){
 	// 图片转换
 	bestImg();
-	$('*[carouselFade]').each(function(){
+	$('*[carouselPos]').each(function(){
 		// 获取基础数据
 		var len = $(this).find('li').length;
+		var iW = $(this).find('li').outerWidth();
 		var _this = this;
-		var current = 0, timer = null, time = $(this).attr('carouselFade');
+		var current = 1, timer = null, time = $(this).attr('carouselPos');
+		// 初始化设置ul li 等;
+		$(this).find('ul').css({'width' : (len+2)*iW, "left" : -iW});
+		$(this).find('ul li').css({'width' : iW});
+		$(this).find('ul li').eq(len-1).clone().prependTo( $(this).find('ul').append($(this).find('ul li').eq(0).clone()) );
 
-		// 初始化
-		init();
-
-		// auto carousel
-		timer = setInterval(autoRun, time);
+		timer = setInterval(autoRun,time)
 
 		// 鼠标移入、移出，关、开定时器
 		$(this).hover(function(){
 			clearInterval(timer);
-			$(this).find('.prev').show(250);
-			$(this).find('.next').show(250);
+			$(this).find('.prev').stop().show(250);
+			$(this).find('.next').stop().show(250);
 		}, function(){
 			timer = setInterval(autoRun, time);
-			$(this).find('.prev').hide();
-			$(this).find('.next').hide();
+			$(this).find('.prev').stop().hide();
+			$(this).find('.next').stop().hide();
 		});
 
 		// 左右切换事件
@@ -44,19 +45,24 @@ jQuery.fn.carouselFade = function (){
 
 		// 序列号联动
 		$(this).find('[outlook] span').on($(this).find('[outlook]').attr('event'), function(){
-			current = $(this).index();
+			current = $(this).index()+1;
 			init();
 		})
 
-		// 切换主程序
 		function init(){
 			current = back(current);
 
-			$(_this).find('li').removeClass('active').stop().fadeOut("slow");
-			$(_this).find('li').eq(current).addClass('active').stop().fadeIn("slow");
-
 			$(_this).find('[outlook] span').removeClass('active');
-			$(_this).find('[outlook] span').eq(current).addClass('active');
+			$(_this).find('[outlook] span').eq(current-1).addClass('active');
+
+			$(_this).find('ul').stop().animate({"left" : -current*iW},1000, function (){
+
+				if(current >= len){
+					$(_this).find('ul').css({'left': 0})
+				}else if(current <= 0){
+					$(_this).find('ul').css({'left': -len*iW})
+				}
+			})
 		};
 		function autoRun(){
 			current++;
@@ -67,21 +73,20 @@ jQuery.fn.carouselFade = function (){
 		function back(n){
 			if( n < 0 ){
 				return len-1;
-			}else if( n >= len ){
-				return 0;
+			}else if( n > len ){
+				return 1;
 			}else{
 				return n;
 			}
 		};
 	})
 	
-	
 	// 处理图片的失真---background-image
 	function bestImg(){
-		$('*[carouselFade] li a').each(function(){
+		$('*[carouselPos] li a').each(function(){
 			var src = "url("+ $(this).children()[0].src +")";
 			$(this).css({'background-image' : src})
 		})
 	}
 }
-$(window).carouselFade();
+$(window).carouselPos();
