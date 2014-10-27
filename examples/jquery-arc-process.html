@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dialog</title>
+	<style type="text/css">
+		.process{
+			width: 106px;
+			height: 106px;
+			position: relative;
+			margin: 20px auto;
+		}
+		.process span{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			line-height: 106px;
+			font-size: 24px;
+			color: #2b2f32;
+			text-align: center;
+		}
+	</style>
+	<!--[if IE]>
+		<script type="text/javascript" src="../src/excanvas.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="process" process="true">
+		<canvas width="106" height="106" type="ing"></canvas>
+		<span>20%</span>
+	</div>
+	<div class="process" process="true">
+		<canvas width="106" height="106" type="ing"></canvas>
+		<span>30%</span>
+	</div>
+	<div class="process" process="true">
+		<canvas width="106" height="106" type="ing"></canvas>
+		<span>50%</span>
+	</div>
+	<div class="process" process="true">
+		<canvas width="106" height="106" type="ing"></canvas>
+		<span>100%</span>
+	</div>
+</body>
+<script type="text/javascript" src="../src/jquery-min.js"></script>
+<script type="text/javascript" src="../plug/jquery-arc-process.js"></script>
+</html>
