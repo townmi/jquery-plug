@@ -36,10 +36,16 @@ jQuery.fn.carouselPos = function (){
 		// 左右切换事件
 		$(this).find('.prev').on($(this).find('.prev').attr('event'), function(){
 			current--;
+			if(current<0){
+				current = 0;
+			}
 			init();
 		});
 		$(this).find('.next').on($(this).find('.next').attr('event'), function(){
 			current++;
+			if(current>len+1){
+				current = len+1
+			}
 			init();
 		});
 
@@ -50,34 +56,23 @@ jQuery.fn.carouselPos = function (){
 		})
 
 		function init(){
-			current = back(current);
-
 			$(_this).find('[outlook] span').removeClass('active');
-			$(_this).find('[outlook] span').eq(current-1).addClass('active');
+			$(_this).find('[outlook] span').eq((current-1) % len).addClass('active');
 
 			$(_this).find('ul').stop().animate({"left" : -current*iW},1000, function (){
-
-				if(current >= len){
-					$(_this).find('ul').css({'left': 0})
-				}else if(current <= 0){
-					$(_this).find('ul').css({'left': -len*iW})
+				// 切换点
+				if(current > len){
+					$(_this).find('ul').css({'left': -iW});
+					current = 1;
+				}else if(current < 1){
+					$(_this).find('ul').css({'left': -len*iW});
+					current = len;
 				}
 			})
 		};
 		function autoRun(){
 			current++;
 			init();
-		};
-		
-		// 索引优化。
-		function back(n){
-			if( n < 0 ){
-				return len-1;
-			}else if( n > len ){
-				return 1;
-			}else{
-				return n;
-			}
 		};
 	})
 	
