@@ -15,8 +15,9 @@ jQuery.fn.arcProcess = function (){
 			this.process = obj.process;
 			this.W = this.canvas.width;
 			this.ctx = this.canvas.getContext('2d');
-			this.step = 0;
 			this.color = obj.color;
+			this.oldColor = obj.oldColor;
+			this.step = 0;
 			this.timer = null;
 		}
 		// 绘图方法
@@ -26,7 +27,7 @@ jQuery.fn.arcProcess = function (){
 			this.ctx.moveTo(this.W/2, this.W/2);
 			this.ctx.arc(this.W/2, this.W/2, this.W/2, 0, Math.PI * 2, false);
 			this.ctx.closePath();
-			this.ctx.fillStyle = '#888d91';
+			this.ctx.fillStyle = this.oldColor;
 			this.ctx.fill();
 
 			// 判断终点
@@ -60,35 +61,11 @@ jQuery.fn.arcProcess = function (){
 			}, 20);
 		}
 
-		$('[process] canvas').each(function(){
-			// 获取百分比
-			var process = parseInt( $(this).next().html() );
-			process = process>100 ? 100 : process;
-			// 颜色库
-			var color = {
-				"ing" : "#0db2ff",
-				"over" : "#fa5b48"
-			}
+		init();
 
-			// 获取当前进度的UI
-			var type = $(this).attr('type');
-			// 生成module
-			var pro = {
-				canvas : this,
-				process : process,
-				color : color[type]
-			}
-			console.log( typeof $(this).parent().attr('process') )
-			// when get this elem postion draw it ;
-			if( ( $(window).height()+$(window).scrollTop() ) > $(this).offset().top && $(this).parent().attr('process')){
-				$(this).parent().attr('process',"");
-				var pro_process = new Process(pro);
-				pro_process.init();
-			}
-	    })
+		$(window).on('scroll', init);
 
-		$(window).on('scroll', function(){
-
+		function init(){
 			$('[process] canvas').each(function(){
 				// 获取百分比
 				var process = parseInt( $(this).next().html() );
@@ -105,7 +82,8 @@ jQuery.fn.arcProcess = function (){
 				var pro = {
 					canvas : this,
 					process : process,
-					color : color[type]
+					color : color[type],
+					oldColor : "#888d91"
 				}
 				console.log( typeof $(this).parent().attr('process') )
 				// when get this elem postion draw it ;
@@ -115,7 +93,7 @@ jQuery.fn.arcProcess = function (){
 					pro_process.init();
 				}
 		    })
-		})
+		}
 	})
 	
 }
