@@ -5,7 +5,6 @@
  * date : 2014.10.23
  *
  */
-
 jQuery.fn.carouselPos = function (){
 	// 图片转换
 	bestImg();
