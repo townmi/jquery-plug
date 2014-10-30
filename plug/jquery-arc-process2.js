@@ -15,11 +15,7 @@ jQuery.fn.arcProcess = function (){
 			this.W = this.canvas.width;
 			this.ctx = this.canvas.getContext('2d');
 			this.color = obj.color;
-<<<<<<< HEAD
-			this.oldColor = obj.oldColor
-=======
 			this.oldColor = obj.oldColor;
->>>>>>> 6f3f6d08b05e24b06b224d1cb15f255b684ad2b9
 			this.step = 0;
 			this.timer = null;
 		}
@@ -63,21 +59,14 @@ jQuery.fn.arcProcess = function (){
 			}, 15);
 		}
 
-<<<<<<< HEAD
 		// onload draw all can see
-		auto();
+		init();
 
 		// when scroll to the elem draw it;
-		$(window).on('scroll', auto)
-
-		function auto(){
-=======
-		init();
 
 		$(window).on('scroll', init);
 
 		function init(){
->>>>>>> 6f3f6d08b05e24b06b224d1cb15f255b684ad2b9
 			$('[process] canvas').each(function(){
 				// 获取百分比
 				var process = parseInt( $(this).next().html() );
