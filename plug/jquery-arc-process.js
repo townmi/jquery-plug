@@ -1,4 +1,4 @@
-'use strict';
+
 /*
  * author : towne
  * version : 0.0.1
@@ -8,58 +8,93 @@
 
 jQuery.fn.arcProcess = function (){
 	$(window).load(function(){
-		$('[process] canvas').each(function(){
-			// 获取百分比
-			var process = parseInt( $(this).next().html() );
-			process = process>100 ? 100 : process;
-			// 颜色库
-			var color = {
-				"ing" : "#0db2ff",
-				"over" : "#fa5b48"
+		// Process Object
+		function Process(obj){
+			this.canvas = obj.canvas;
+			this.process = obj.process;
+			this.W = this.canvas.width;
+			this.ctx = this.canvas.getContext('2d');
+			this.color = obj.color;
+			this.oldColor = obj.oldColor;
+			this.step = 0;
+			this.timer = null;
+		}
+		// 绘图方法
+		Process.prototype.draw = function(){
+			this.ctx.clearRect(0, 0, this.W, this.W);
+			this.ctx.beginPath();
+			this.ctx.moveTo(this.W/2, this.W/2);
+			this.ctx.arc(this.W/2, this.W/2, this.W/2, 0, Math.PI * 2, false);
+			this.ctx.closePath();
+			this.ctx.fillStyle = this.oldColor;
+			this.ctx.fill();
+
+			// 判断终点
+			if(this.step > this.process){
+				this.step = this.process
+				clearInterval(this.timer);
+
 			}
-			// 页面绘图
-			timer = setInterval(draw, 10)
+			this.ctx.beginPath();
+			this.ctx.moveTo(this.W/2, this.W/2);
+			this.ctx.arc(this.W/2, this.W/2, this.W/2, Math.PI*1.5, Math.PI * (1.5 - this.step /50), true);
+			this.ctx.closePath();
+			this.ctx.fillStyle = this.color;
+			this.ctx.fill();
 
-			// 获取当前进度的UI
-			var type = $(this).attr('type');
+			this.ctx.beginPath();
+			this.ctx.moveTo(this.W/2, this.W/2);
+			this.ctx.arc(this.W/2, this.W/2, this.W/2-7, 0, Math.PI * 2, true);
+			this.ctx.closePath();
+			this.ctx.fillStyle = '#ffffff';
+			this.ctx.fill();
+			this.step++;
+		}
+		Process.prototype.init = function(){
+			var _this = this;
+			// 初始化画图
+			this.timer = setInterval(function(){
+				_this.draw.apply(_this);
+				
+			}, 15);
+		}
 
-			var canvas = this, timer = null, step = 0;
-			var context = canvas.getContext('2d');
-			// 正方形 W=H
-			var W = canvas.width;
+		// onload draw all can see
+		init();
 
-			context.clearRect( 0, 0, W, W);
+		// when scroll to the elem draw it;
 
-			function draw(){
-				context.clearRect( 0, 0, W, W);
-				context.beginPath();
-				context.moveTo(W/2, W/2);
-				context.arc(W/2, W/2, W/2, 0, Math.PI * 2, false);
-				context.closePath();
-				context.fillStyle = '#888d91';
-				context.fill();
+		$(window).on('scroll', init);
 
-				if(step > process){
-					step = process
-					clearInterval(timer);
+		function init(){
+			$('[process] canvas').each(function(){
+				// 获取百分比
+				var process = parseInt( $(this).next().html() );
+				process = process>100 ? 100 : process;
+				// 颜色库
+				var color = {
+					"ing" : "#0db2ff",
+					"over" : "#fa5b48"
 				}
 
-				context.beginPath();
-				context.moveTo(W/2, W/2);
-				context.arc(W/2, W/2, W/2, Math.PI*1.5, Math.PI * (1.5 - step /50), true);
-				context.closePath();
-				context.fillStyle = color[type];
-				context.fill();
-
-				context.beginPath();
-				context.moveTo(W/2, W/2);
-				context.arc(W/2, W/2, W/2-7, 0, Math.PI * 2, true);
-				context.closePath();
-				context.fillStyle = '#ffffff';
-				context.fill();
-				step++;
-			}
-	    })
+				// 获取当前进度的UI
+				var type = $(this).attr('type');
+				// 生成module
+				var pro = {
+					canvas : this,
+					process : process,
+					color : color[type],
+					oldColor : "#888d91"
+				}
+				console.log( typeof $(this).parent().attr('process') )
+				// when get this elem postion draw it ;
+				if( ( $(window).height()+$(window).scrollTop() ) > $(this).offset().top && $(this).parent().attr('process')){
+					$(this).parent().attr('process',"");
+					var pro_process = new Process(pro);
+					pro_process.init();
+				}
+		    })
+		}
 	})
 }
 $(window).arcProcess();
