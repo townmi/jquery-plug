@@ -4,11 +4,14 @@
 	<meta charset="UTF-8">
 	<title>foot</title>
 	<style type="text/css">
+		body,html{
+			margin: 0;
+			padding: 0;
+		}
 		.process{
 			width: 106px;
 			height: 106px;
 			position: relative;
-			margin: 20px auto;
 		}
 		.process span{
 			width: 100%;
@@ -21,27 +24,28 @@
 			color: #2b2f32;
 			text-align: center;
 		}
+		.main{
+			height: 200px;
+		}
+		.foot{
+			width: 100%;
+			height: 150px;
+			background-color: #f4d;
+		}
 	</style>
 	<!--[if IE]>
 		<script type="text/javascript" src="../src/excanvas.js"></script>
 	<![endif]-->
 </head>
 <body>
+
 	<div class="process" process="true">
 		<canvas width="106" height="106" type="ing"></canvas>
 		<span>20%</span>
 	</div>
-	<div class="test">
-		<img src="http://toumi.yixin.com/lingtou-pic/upload/alading10222.jpg" alt="">
-		<img src="http://toumi.yixin.com/lingtou-pic/upload/xiaoapple20141028.jpg" alt="">
-		<img src="http://toumi.yixin.com/lingtou-pic/upload/getMoney20140814.jpg" alt="">
-	</div>
+	<div class="main"></div>
+	<div class="foot" foot='true'></div>
 </body>
 <script type="text/javascript" src="../src/jquery-min.js"></script>
-<!-- <script type="text/javascript" src="../plug/jquery-foot.js"></script> -->
-<script type="text/javascript">
-	$(window).load(function(){
-		alert(1);
-	})
-</script>
+<script type="text/javascript" src="../plug/jquery-foot.js"></script>
 </html>
