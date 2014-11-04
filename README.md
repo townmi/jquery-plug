@@ -1,16 +1,17 @@
 #jquery-plugs by towne
 -----------------------
-#just need to include jquery and this dialog plug, it will works.
-by the way, your labels should write like this example.
+
+###just need to include jquery and this dialog plug, it will works.
+###by the way, your labels should write like this example.
 
 ## dialog
 
-### javascript
+#### javascript
 ```javascript
 	<script type="text/javascript" src="../src/jquery-min.js"></script>
 	<script type="text/javascript" src="../plug/jquery-dialog.js"></script>
 ```
-### html
+#### html
 ```html
 	<a href="javascript:;" dialogOpen="1">for dialog1</a>
 	<div class="mask" dialogMask="true"></div>
@@ -28,12 +29,12 @@ by the way, your labels should write like this example.
 
 ##carousel-fade
 
-### javascript
+#### javascript
 ```javascript
 	<script type="text/javascript" src="../src/jquery-min.js"></script>
 	<script type="text/javascript" src="../plug/jquery-carousel-fade.js"></script>
 ```
-### html
+#### html
 ```html
 	<div class="carousel" carouselFade="5000">
 		<ul>
@@ -77,12 +78,12 @@ by the way, your labels should write like this example.
 
 ##arc-process
 
-### javascript
+#### javascript
 ```javascript
 	<script type="text/javascript" src="../src/jquery-min.js"></script>
 	<script type="text/javascript" src="../plug/jquery-arc-process.js"></script>
 ```
-### html
+#### html
 ```html
 	<div class="process" process="true">
 		<canvas width="106" height="106" type="ing"></canvas>
