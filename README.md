@@ -1,8 +1,8 @@
 #jquery-plugs by towne
 -----------------------
 
-###just need to include jquery and this dialog plug, it will works.
-###by the way, your labels should write like this example.
+just need to include jquery and this dialog plug, it will works.
+by the way, your labels should write like this example.
 
 ## dialog
 
