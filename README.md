@@ -13,17 +13,17 @@ by the way, your labels should write like this example.
 ```
 #### html
 ```html
-	<a href="javascript:;" dialogOpen="1">for dialog1</a>
+	<a href="javascript:;" onclick="$(this).dialogOpen();">for dialog1</a>
 	<div class="mask" dialogMask="true"></div>
 	<div class="dialog dialog1" dialogBox="1">
-		<i dialogClose="true">close</i>
-		<a href="javascript:;" dialogClose="true">关闭一</a>
+		<i onclick="$(this).dialogClose();">close</i>
+		<a href="javascript:;">关闭一</a>
 	</div>
-	<a href="javascript:;" dialogOpen="2">for dialog2</a>
+	<a href="javascript:;" dialogOpen="2"  onclick="$(this).dialogOpen();">for dialog2</a>
 	<div class="mask" dialogMask="true"></div>
 	<div class="dialog dialog1" dialogBox="2">
-		<i dialogClose="true">close</i>
-		<a href="javascript:;" dialogClose="true">关闭一</a>
+		<i onclick="$(this).dialogClose();">close</i>
+		<a href="javascript:;">关闭一</a>
 	</div>
 ```
 

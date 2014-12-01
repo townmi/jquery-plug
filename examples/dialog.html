@@ -81,8 +81,8 @@
 
 	 -->
 	<a href="javascript:;" dialogOpen="1" class="dialog1_1">for dialog1</a>
-	<i dialogOpen="2">for dialog2</i>
-	<button dialogOpen='3'>for dislog3</button>
+	<i dialogOpen="2" class="dialog1_2" onclick="$(this).dialogOpen();">for dialog2</i>
+	<button dialogOpen='3' class="dialog1_3">for dislog3</button>
 	
 	<div class="dialog dialog1" dialogBox="1">
 		<i dialogClose="true">close</i>
@@ -95,7 +95,7 @@
 	</div>
 
 	<div class="dialog dialog3" dialogBox="3">
-		<i dialogClose="true">close</i>
+		<i onclick="$(this).dialogClose();">close</i>
 		<a href="javascript:;" dialogClose="true">关闭45</a>
 	</div>
 	<div class="bigbox"></div>
@@ -106,9 +106,25 @@
 <script type="text/javascript">
 	$(function(){
 		$('.dialog1_1').on('click', function(){
-			$(this).dialogOpen();
+			$(this).dialogOpen(function(){
+				alert(1);
+			});
 		})
 		$('.dialog1 a').on('click', function(){
+			
+			$(this).dialogClose();
+		})
+		$('.dialog1_1').on('click', function(){
+			$(this).dialogOpen();
+		})
+		$('.dialog2 a').on('click', function(){
+			
+			$(this).dialogClose();
+		})
+		$('.dialog1_3').on('click', function(){
+			$(this).dialogOpen();
+		})
+		$('.dialog3 a').on('click', function(){
 			
 			$(this).dialogClose();
 		})
