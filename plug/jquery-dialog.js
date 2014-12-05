@@ -46,7 +46,7 @@ jQuery.fn.dialogOpen = function (fn){
 		mask.css({"width" : W, "height" : H, "z-index" : "1000000"});
 
 		box.each(function(i){
-			$(this).css({"left" : "50%", "margin-left" : -$(this).outerWidth()/2, "z-index" : "10000011"});
+			$(this).css({"left" : "50%", "margin-left" : -$(this).outerWidth()/2, "margin-top" : -$(this).outerHeight()/2, "z-index" : "10000011"});
 			var T = ( $(window).innerHeight() - $(this).outerHeight() )/2;
 			isIe6() ? $(this).css({"top" : $(window).scrollTop() + T }) : $(this).css({"top" : T});
 		})

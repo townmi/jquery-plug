@@ -133,7 +133,7 @@
 <body>
 	<div class="main">
 		<div class="main2">
-			<input type="text" calendar="true" value="2014-10-01">
+			<input type="text" calendar="true">
 		</div>
 		
 	</div>
@@ -160,6 +160,41 @@
 					<span title="Saturday">六</span>
 				</p>
 				<ul class="date this_month_date clear">
+					<li><a href="javascript:;" class="prev_month_date">30</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-01">1</a></li>
+					<li><a href="javascript:;" class="this_month today" title="2014-12-02">2</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-03">3</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-04">4</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-05">5</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-06">6</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-07">7</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-08">8</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-09">9</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-10">10</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-11">11</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-12">12</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-13">13</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-14">14</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-15">15</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-16">16</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-17">17</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-18">18</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-19">19</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-20">20</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-21">21</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-22">22</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-23">23</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-24">24</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-25">25</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-26">26</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-27">27</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-28">28</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-29">29</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-30">30</a></li>
+					<li><a href="javascript:;" class="this_month" title="2014-12-31">31</a></li>
+					<li><a href="javascript:;" class="next_month_date">1</a></li>
+					<li><a href="javascript:;" class="next_month_date">2</a></li>
+					<li><a href="javascript:;" class="next_month_date">3</a></li>
 				</ul>
 			</div>
 		</div>
@@ -168,22 +203,13 @@
 <script type="text/javascript" src="../src/jquery-min.js"></script>
 <script type="text/javascript" src="../plug/jquery-calendar.js"></script>
 <script type="text/javascript">
-	$(window).load(function(){
-		// qu rili 
-		$(document).on("click",function(){
-			$("*[calendarBox]").hide();
+	$(function(){
+		$('input').on('focus', function(){
+			$(this).calendarOpen();
 		});
-
-		$(".main input").on('focus', function(){
-
-			$(this).calendarOpen($(this).val());
-			
-		});
-
-		$(".main input").on('click', function(){
-			return false;
-		})
-
+		// $('input').on('blur', function(){
+		// 	$(this).calendarClose();
+		// })
 	})
 </script>
 </html>
