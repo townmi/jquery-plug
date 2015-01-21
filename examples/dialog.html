@@ -122,35 +122,86 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../src/jquery-min.js"></script>
-<script type="text/javascript" src="../plug/jquery-dialog.js"></script>
+<script type="text/javascript" src="../seajs/sea.js"></script>
+
+
+
+
 <script type="text/javascript">
-	$(function(){
 
-		$('body').css({
-			height: $(window).height()
-		});
+	seajs.config({
+		base: "../modules/",
+		// 别名配置
+		alias: {
+     		"jquery": "src/jquery.js"
+    	}
+	});
 
-		$(window).on('resize', function(){
-			$('body').css({
-				height: $(window).height()
-			});
-		})
-		//
-		$(".js_dialog_1").on("click", function (){
-			$(this).dialogOpen({
-				box : $(".JS_dialog_1"),
-				fn  : function (){
-					$(".js_drag").drag();
-				}
-			})
-		});
-		$(".js_dialog_close").on('click', function (){
-			$(this).dialogClose();
-		})
-
+	seajs.use("../modules/plugs/app", function(fn){
 		
+		fn();
 
-	})
+	});
+	// define(function (require, exports, module){
+
+	// 	var $ = require("jquery");
+
+	// 	console.log($)
+
+	// 	seajs.use("../modules/plugs/jquery-dialog", function(fn){
+		
+	// 		$('.js_dialog_1').on('click', function(){
+	// 			alert(1);
+	// 		});
+
+	// 		console.log(fn)
+
+	// 	});
+
+	// })
+
+</script>
+
+
+
+
+
+<script type="text/javascript">
+	
+	// ;define(function (require, exports, module){
+
+	// 	var $ = jQuery = require("jquery.min.js");
+
+	// 	console.log($)
+
+	// 	$(function(){
+
+	// 		$('body').css({
+	// 			height: $(window).height()
+	// 		});
+
+	// 		$(window).on('resize', function(){
+	// 			$('body').css({
+	// 				height: $(window).height()
+	// 			});
+	// 		})
+	// 		//
+	// 		$(".js_dialog_1").on("click", function (){
+	// 			$(this).dialogOpen({
+	// 				box : $(".JS_dialog_1"),
+	// 				fn  : function (){
+	// 					$(".js_drag").drag();
+	// 				}
+	// 			})
+	// 		});
+	// 		$(".js_dialog_close").on('click', function (){
+	// 			$(this).dialogClose();
+	// 		})
+
+			
+
+	// 	})
+		
+	// })	
 </script>
 </html>

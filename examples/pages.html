@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>foot</title>
+	<style type="text/css">
+		body,html{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-image: url(../example_img/apple_background.jpg);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 100% 100%;
+		}
+		.ui_pages{
+			padding: 400px;
+			letter-spacing: -3px;
+		}
+		.ui_prev, .ui_next{
+			width: 36px;
+			height: 20px;
+			display: inline-block;
+			border-radius: 3px;
+			background-size: 8px 100px;
+			background-color: #ffffff;
+			background-image: url(../example_img/apple_pages.png);
+			background-repeat: no-repeat;
+			box-shadow: -1px 0 1px #dcdbda, -1px 0 1px #dcdbda, 0 0px 0px blue, 0 2px 3px #b1b0af;
+		}
+		.ui_prev{
+			background-position: center 3px;
+		}
+		.ui_next{
+			background-position: center -54px;
+		}
+	</style>
+	<!--[if IE]>
+		<script type="text/javascript" src="../src/excanvas.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<div class="ui_pages">
+		<a href="javascript:;" class="ui_prev"></a>
+		<a href="javascript:;" class="ui_more"></a>
+		<a href="javascript:;" class="ui_next"></a>
+	</div>
+</body>
+<script type="text/javascript" src="../src/jquery-min.js"></script>
+<script type="text/javascript" src="../plug/jquery-foot.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('body').css({
+			height: $(window).height()
+		});
+
+		$(window).on('resize', function(){
+			$('body').css({
+				height: $(window).height()
+			});
+		})
+	})
+</script>
+</html>
