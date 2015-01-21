@@ -11,22 +11,16 @@ define(function (require, exports, module){
 
 	var $ = jQuery = require("jquery");
 
-	var fn = require("plugs/jquery-dialog");
-
-	fn({
-		box : $(".JS_dialog_1")
-	});
-
-	console.log( fn );
+	var Dialog = require("plugs/dialog");
 
 	module.exports = function(){
 
 		$(".js_dialog_1").on('click', function(){
-			console.log($(this));
 
-			// $(this).dislogOpen({
-			// 	box : 
-			// });
+			var dialog = new Dialog();
+
+			dialog.init();
+
 		})
 
 	}

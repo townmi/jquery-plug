@@ -5,28 +5,103 @@
 //  * date : 2015.1.20
 //  *
 //  */
+// var config = $.extend(true,{
+// 		IsValidate:true,
+// 		hmsg:"",
+// 		showok:{show:true,showclass:"tip-ok"},
+// 		style:{className:'tip-info',alignX:'right',alignY:'center',offsetX:8,showOn:"none",alignTo:'target',keepInViewport:false},
+// 		div:false
+// 	},config);
+
+define(function (require, exports, module){
+
+	var $ = jQuery = require("jquery");
+
+	function Dialog (config){
+
+		var config = $.extend(true, {
+			box : {
+				className : "ui_dialog",
+				targetName: "div",
+				elements  : {
+					head : {
+						className : "ui_dialog_head",
+						targetName: "div",
+						elements  : {
+							close : {
+								className : "ui_dialog_close",
+								targetName: "a"
+							},
+							min : {
+								className : "ui_dialog_min",
+								targetName: "a"
+							},
+							max : {
+								className : "ui_dialog_max",
+								targetName: "a"
+							}
+						}
+					},
+					body : {
+						className : "ui_dialog_body",
+						targetName: "div"
+					},
+					foot : {
+						className : "ui_dialog_foot",
+						targetName: "div"
+					}
+				}	
+			}
+		}, config); 
+
+		this.config = config
+
+	}
+
+	Dialog.prototype.init = function() {
+
+		function __createElement(arr){
+
+			var fn = arguments;
+
+			$.each(arr[0], function (name, value){
+
+				if(value["className"]){
+
+					var ele = $("<"+value["targetName"]+">").addClass(value["className"]);
+
+					console.log(1);
+
+					if(!arr[1]){
+
+						$("body").append(ele);
+
+					}else{
+
+						arr[1].append(ele);
+
+					}
+
+					if(value["elements"]){
+
+						return fn.callee([value["elements"], ele]);
+
+					}
+
+				}
+
+			})
+
+		}
+
+		__createElement([this.config, null]);
 
 
-define("dialog", [], function (require, exports, module){
 
-	console.log(module.uri);
+	};
 
-	var $ = jQuery = require("../src/jquery");
-	
-	console.log(require("../src/jquery"));
-
-	exports.foo = 'bar';
-
-	// module.exports = {
-	// 	foo : "bar",
-
-	// 	say : function(){
-	// 		console.log($);
-	// 	}
-	// }
-
+	module.exports = Dialog;
 	// module.exports = jQuery.fn.dialogOpen = function (j) {
-
 	// 	// this is open source
 	// 	var _this = this,
 	// 		fn  = null,
