@@ -3,127 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>carousel</title>
-	<style type="text/css">
-		body,h1,h2,h3,h4,h5,h6,p,dl,dd{
-			margin: 0; 
-			font-size: 12px;
-			padding: 0; 
-			font-family: "arial";
-		}
-		ol,ul{
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-		a{
-			text-decoration: none;
-			cursor: pointer;
-		}
-		img{
-			border: none;
-			vertical-align: top;
-		}
-		form{
-			margin: 0;
-		}
-		input{
-			margin: 0; 
-			padding: 0;
-		} 
-		select{
-			margin: 0;
-		}
-		textarea{
-			margin: 0; 
-			padding: 0; 
-			resize: none; 
-			overflow: auto; 
-			outline: none;
-		}
-		.mar{
-			height: 250px;
-		}
-		.mar1{
-			height: 20px;
-		}
-		.carousel{
-			width: 100%;
-			height: 450px;
-			position: relative;
-		}
-		.carousel2{
-			width: 500px;
-			height: 200px;
-		}
-		.carousel ul, .carousel li, .carousel a{
-			width: 100%;
-			height: 100%;
-		}
-		.carousel li{
-			position: absolute;
-			left: 0;
-			top: 0;
-			overflow: hidden;
-		}
-		.carousel li.active{
-			z-index: 2;
-		}
-		.carousel a{
-		 	display: inline-block;
-		 	width: 100%;
-		 	height: 100%;
-		 	background-position: center center;
-		 	background-repeat: no-repeat;
-		}
-		.carousel img{
-			display: none;
-		}
-		.carousel .car_btn{
-			position: absolute;
-			width: 100%;
-			bottom: 8.8%;
-			text-align: center;
-			z-index: 4;
-		}
-		.carousel .car_btn span{
-			display: inline-block;
-			width: 20px;
-			height: 20px;
-			background-color: #00FFFF;
-			line-height: 20px;
-			border-radius: 10px;
-			cursor: pointer;
-			margin: 0 5px;
-		}
-		.carousel .car_btn span.active{
-			background-color: yellow;
-		}
-		.carousel .prev, .carousel .next{
-			position: absolute;
-			top: 50%;
-			z-index: 5;
-			width: 40px;
-			height: 200px;
-			margin-top: -100px;
-			background-color: red;
-			display: none;
-		}
-		.carousel .prev{
-			left: 50%;
-			margin-left: -40%;
-		}
-		.carousel .next{
-			right: 50%;
-			margin-right: -40%;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="./style/reset.css">
+	<link rel="stylesheet" type="text/css" href="./style/carousel.css">
 </head>
 <body>
-	<!-- 
 
-		<div></div>*1000
-
-	 -->
 	<div class="mar1"></div>
 	<div class="carousel carousel1" carouselFade="5000">
 		<ul>
@@ -163,46 +47,29 @@
 		<a href="javascript:;" class="prev" event="click"><</a>
 		<a href="javascript:;" class="next" event="click">></a>
 	</div>
-	<div class="mar"></div>
-	<div class="carousel carousel2" carouselFade="3000">
-		<ul>
-			<li class='active'>
-				<a href="http://toumi.yixin.com/" target="_blank">
-					<img src="http://toumi.yixin.com/lingtou-pic/upload/alading10222.jpg" alt="1">
-				</a>
-			</li>
-			<li>
-				<a href="http://www.baidu.com/" target="_blank">
-					<img src="http://toumi.yixin.com/lingtou-pic/upload/getMoney20140814.jpg" alt="2">
-				</a>
-			</li>
-			<li>
-				<a href="http://www.126.com/" target="_blank">
-					<img src="http://toumi.yixin.com/lingtou-pic/upload/myb20140923.jpg" alt="3">
-				</a>
-			</li>
-			<li>
-				<a href="http://www.taobao.com/" target="_blank">
-					<img src="http://toumi.yixin.com/lingtou-pic/upload/toumiAd20140804.jpg" alt="4">
-				</a>
-			</li>
-			<li>
-				<a href="http://www.qq.com/" target="_blank">
-					<img src="http://toumi.yixin.com/lingtou-pic/upload/myb20140923.jpg" alt="5">
-				</a>
-			</li>
-		</ul>
-		<div class="car_btn" event="mouseover" outlook>
-			<span class='active'>1</span>
-			<span>2</span>
-			<span>3</span>
-			<span>4</span>
-			<span>5</span>
-		</div>
-		<a href="javascript:;" class="prev" event="click"><</a>
-		<a href="javascript:;" class="next" event="click">></a>
-	</div>
 </body>
-<script type="text/javascript" src="../src/jquery-min.js"></script>
-<script type="text/javascript" src="../plug/jquery-carousel-fade.js"></script>
+<script type="text/javascript" src="../seajs/sea.js"></script>
+<script type="text/javascript">
+
+	seajs.config({
+
+		// 配置基础路径，内部模块的依赖，不再需要全局去配置路径
+		base: "../modules/",
+
+		// 系统公用模块，直接依赖
+		alias: {
+     		"jquery": "src/jquery.js"
+    	}
+
+	});
+
+	seajs.use("../modules/plugs/app", function(fn){
+		
+		// app 启动器
+
+		fn();
+
+	});
+
+</script>
 </html>
