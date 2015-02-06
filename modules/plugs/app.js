@@ -14,6 +14,8 @@ define(function (require, exports, module){
 
 	var Drag = require("plugs/drag");
 
+	var Calendar = require("plugs/calendar");
+
 	module.exports = function(){
 
 		$('body').css({
@@ -27,6 +29,13 @@ define(function (require, exports, module){
 		})
 
 
+		var c = new Calendar($(".js_calendar_box"));
+
+		c.draw();
+		
+		c.events();
+
+		console.log(c)
 
 		$(".js_dialog_1").on('click', function(){
 
