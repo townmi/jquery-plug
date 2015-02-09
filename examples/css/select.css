@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+ * author : towne
+ * version : 0.0.1
+ * date : 2015.2.10
+ *
+*/
+
+.ui_select_box{
+	margin: 100px auto;
+	width: 210px;
+}
+
+.ui_select_top{
+	width: 208px;
+	height: 24px;
+	border: 1px solid #e6e6e6;
+	border-radius: 2px 2px 0 0;
+	background-color: #ffffff;
+}
+.ui_select_input{
+	width: 84%;
+	border: none;
+	height: 20px;
+	padding: 2px 2%;
+}
+.ui_select_btn{
+	width: 12%;
+	line-height: 24px;
+	text-align: center;
+	font-size: 16px;
+	color: #333333;
+}
+.ui_select_btn:hover{
+	color: #ffffff;
+	background-color: #333333;
+}
+
+.ui_select_body{
+	width: 208px;
+	border: 1px solid #e6e6e6;
+	border-top: none;
+	border-bottom: none;
+	border-radius: 0 0 3px 3px;
+	overflow: hidden;
+	background-color: #ffffff;
+}
+.ui_select_body li{
+	height: 20px;
+	padding: 2px 2%;
+	border-bottom: 1px solid #e6e6e6;
+}

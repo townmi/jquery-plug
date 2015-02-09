@@ -20,7 +20,7 @@ define(function (require, exports, module){
 		this.url = url;
 
 		this.len = Math.ceil( data.length/5 );
-
+		this.btns = [];
 		this.currentNum = 0;
 		this.init();
 
@@ -34,7 +34,7 @@ define(function (require, exports, module){
 
 		this.next = $("<a>").addClass("ui_pages_next js_pages_next").attr("href","javascript:;").html("<i class='fa fa-angle-right'></i>");
 
-		this.more = this.len>5 ? $("<a>").addClass("ui_pages_more js_pages_more").attr("href","javascript:;").html("...") : null;
+		this.more = this.len>5 ? $("<a>").addClass("ui_pages_more js_pages_more").attr({"href":"javascript:;","location":"right"}).html("...") : null;
 
 		if(this.len>1){
 
@@ -48,12 +48,24 @@ define(function (require, exports, module){
 					btn.addClass("active")
 				}
 
+				this.btns.push(btn);
+
 			}
 
 			this.pageBox.append(this.next);
 
 			if(this.len>5){
-				this.more.insertBefore(this.next)
+
+				$.each(this.btns, function (i, btn){
+
+					if(i>=5){
+						btn.hide();
+					}
+
+				})
+
+				this.more.insertBefore(this.next);
+
 			}
 
 		}else{
@@ -116,6 +128,11 @@ define(function (require, exports, module){
 		// more btn event
 		this.more.on("click", function(){
 
+			if($(this).attr("location") === "right"){
+
+				
+				
+			}
 
 
 		})
@@ -131,9 +148,6 @@ define(function (require, exports, module){
 		btnsNum.removeClass("active").eq(num).addClass("active");
 
 	}
-
-
-
 
 	Page.prototype.draw = function(){
 

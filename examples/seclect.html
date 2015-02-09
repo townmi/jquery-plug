@@ -3,213 +3,58 @@
 <head>
 	<meta charset="UTF-8">
 	<title>foot</title>
-	<style type="text/css">
-		body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin: 0; padding: 0;}
-		body{font: 14px "Microsoft Yahei", "Arial Narrow", HELVETICA; background: #f6f6f6; -webkit-text-size-adjust: 100%;}
-		table{border-collapse: collapse; border-spacing: 0;}
-		li{list-style: none;}
-		p{word-wrap: break-word;}
-		a{color: #172c45; text-decoration: none;}
-		em{font-style: normal;}
-		img{border: 0; vertical-align: top;}
-		input{outline: none;}
-		textarea{resize: none; overflow: auto; outline: none;}
-		.fl{float: left;}
-		.fr{float: right;}
-		.clear:after{content: ''; display: block; clear: both;}
-		.clear{zoom: 1;}
-
-		.calendar_box{
-			width: 230px;
-			font-family: Arial;
-			position: absolute;
-			left: 0;
-			top: 10px;
-		}
-		/*title*/
-		.calendar_title{
-			text-align: center;
-			height: 43px;
-			line-height: 43px;
-			width: 100%;
-			background-color: #cc0000;
-			position: relative;
-			font-size: 14px;
-			color: #ffffff;
-		}
-		.calendar_title .prev_year, .calendar_title .next_year, .calendar_title .prev_month, .calendar_title .next_month{
-			width: 40px;
-			height: 43px;
-			position: absolute;
-			top: 0
-		}
-		.calendar_title .prev_month, .calendar_title .next_month{
-		 	width: 35px;
-		}
-		.calendar_title .prev_year{
-			left: 0;
-			background: url(../example_img/l_0.png) 15px 16px no-repeat;
-			border-right: 1px solid #bf0000;
-		}
-		.calendar_title .prev_month{
-			left: 41px;
-			background: url(../example_img/l_0.png) 15px 16px no-repeat;
-			border-left: 1px solid #d52e2e;
-		}
-		.calendar_title .next_month{
-			right: 41px;
-			background: url(../example_img/r_0.png) 15px 16px no-repeat;
-			border-right: 1px solid #d52e2e;
-		}
-		.calendar_title .next_year{
-			right: 0;
-			background: url(../example_img/r_0.png) 15px 16px no-repeat;
-			border-left: 1px solid #bf0000;
-		}
-		.calendar_title .prev_year:hover, .calendar_title .prev_month:hover{
-			background: url(../example_img/l_1.png) 15px 16px no-repeat;
-		}
-		.calendar_title .next_year:hover, .calendar_title .next_month:hover{
-			background: url(../example_img/r_1.png) 15px 16px no-repeat;
-		}
-		.calendar_body{
-			background-color: #fbf8f1;
-		}
-		.calendar_body .day{
-			padding: 13px 17px 0 17px;
-			text-align: center;
-			font-family: "Microsoft Yahei";
-		}
-		.calendar_body .day span{
-			width: 28px;
-			height: 28px;
-			line-height: 28px;
-			float: left;
-		}
-		.calendar_body .date{
-			padding: 0 17px;
-			text-align: center;
-		}
-		.calendar_body .date a{
-			width: 28px;
-			height: 28px;
-			line-height: 28px;
-			float: left;
-			color: #593442;
-		}
-		.calendar_body .date a.today{
-			background-color: #cc0000;
-			color: #ffffff;
-		}
-		.calendar_body .date a:hover{
-			background-color: #cc0000;
-			color: #ffffff;
-		}
-		.calendar_body .date a.prev_month_date, .calendar_body .date a.next_month_date{
-			color: #cccccc;
-		}
-		.calendar_body .date a.prev_month_date:hover, .calendar_body .date a.next_month_date:hover{
-			color: #cccccc;
-			background-color: #fbf8f1;
-		}
-		.main{
-			width: 600px;
-			height: 500px;
-			padding: 345px 289px 0 213px;
-			position: relative;
-			left: 100px;
-		}
-		.main2{
-			padding-top: 203px;
-			padding-left: 23px;
-		}
-		/*input{
-			position: absolute;
-			left: 0px;
-			top: 0px;
-		}*/
-	</style>
+	<link rel="stylesheet" type="text/css" href="./css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./css/select.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
 </head>
 <body>
-	<div class="main">
-		<div class="main2">
-			<input type="text" calendar="true">
+	<div class="ui_select_box js">
+		<select>
+			<option value="volvo">Volvo</option>
+			<option value="saab">Saab</option>
+			<option value="opel">Opel</option>
+			<option value="audi">Audi</option>
+		</select>
+		<div class="ui_select_top clear">
+			<input type="text" name="" class="ui_select_input fl">
+			<a href="javascript:;" class="ui_select_btn fr">
+				<i class="fa fa-angle-down"></i>
+			</a>
 		</div>
-		
+		<ul class="ui_select_body">
+			<li value="Volvo"><span>V</span><span>o</span><span>l</span><span>v</span><span>o</span></li>
+			<li value="Saab"><span>S</span><span>a</span><span>a</span><span>b</span></li>
+			<li value="Opel"><span>O</span><span>p</span><span>e</span><span>l</span></li>
+			<li value="Audi"><span>A</span><span>u</span><span>d</span><span>i</span></li>
+		</ul>
+		<div class="ui_select_foot">
+			
+		</div>
 	</div>
 	
-
-
-	<div class="calendar_box" calendarBox="true" style="display:none;">
-		<div class="calendar">
-			<div class="calendar_title">
-				<a href="javascript:;" class="prev_year" title="Previous Year"></a>
-				<a href="javascript:;" class="prev_month" title="Previous Month"></a>
-				<p><span class="this_year">2014</span>年<span class="this_month">12</span>月</p>
-				<a href="javascript:;" class="next_month" title="Next Month"></a>
-				<a href="javascript:;" class="next_year" title="Next Year"></a>
-			</div>
-			<div class="calendar_body">
-				<p class="day">
-					<span title="Sunday">日</span>
-					<span title="Monday">一</span>
-					<span title="Tuesday">二</span>
-					<span title="Wednesday">三</span>
-					<span title="Thursday">四</span>
-					<span title="Friday">五</span>
-					<span title="Saturday">六</span>
-				</p>
-				<ul class="date this_month_date clear">
-					<li><a href="javascript:;" class="prev_month_date">30</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-01">1</a></li>
-					<li><a href="javascript:;" class="this_month today" title="2014-12-02">2</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-03">3</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-04">4</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-05">5</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-06">6</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-07">7</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-08">8</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-09">9</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-10">10</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-11">11</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-12">12</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-13">13</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-14">14</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-15">15</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-16">16</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-17">17</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-18">18</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-19">19</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-20">20</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-21">21</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-22">22</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-23">23</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-24">24</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-25">25</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-26">26</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-27">27</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-28">28</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-29">29</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-30">30</a></li>
-					<li><a href="javascript:;" class="this_month" title="2014-12-31">31</a></li>
-					<li><a href="javascript:;" class="next_month_date">1</a></li>
-					<li><a href="javascript:;" class="next_month_date">2</a></li>
-					<li><a href="javascript:;" class="next_month_date">3</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 </body>
-<script type="text/javascript" src="../src/jquery-min.js"></script>
-<script type="text/javascript" src="../plug/jquery-calendar.js"></script>
+<script type="text/javascript" src="../seajs/sea.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$('input').on('focus', function(){
-			$(this).calendarOpen();
-		});
-		// $('input').on('blur', function(){
-		// 	$(this).calendarClose();
-		// })
-	})
+
+	seajs.config({
+
+		// 配置基础路径，内部模块的依赖，不再需要全局去配置路径
+		base: "../modules/",
+
+		// 系统公用模块，直接依赖
+		alias: {
+     		"jquery": "src/jquery.js"
+    	}
+
+	});
+
+	seajs.use("../modules/plugs/app", function(fn){
+		
+		// app 启动器
+
+		fn();
+
+	});
+
 </script>
 </html>
