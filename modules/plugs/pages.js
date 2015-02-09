@@ -2,7 +2,7 @@
 /*
  * author : towne
  * version : 0.0.1
- * date : 2014.10.22
+ * date : 2015.2.10
  *
 */
 
@@ -15,11 +15,12 @@ define(function (require, exports, module){
 	function Page(parent, data, parentArt, url){
 
 		this.pageBox = parent;
-		this.artBox = parentArt;
 		this.data = data;
+		this.artBox = parentArt;
 		this.url = url;
+
 		this.len = Math.ceil( data.length/5 );
-		this.showData = [];
+
 		this.currentNum = 0;
 		this.init();
 
@@ -28,131 +29,23 @@ define(function (require, exports, module){
 	Page.prototype.init = function(){
 
 		var _this = this;
-
-		function __tab(num){
-
-			_this.draw();
-
-			var btnsNum = _this.pageBox.find(".js_pages_btn");
-
-			btnsNum.removeClass("active").eq(num%5).addClass("active");
-
-		}
 		
-		this.prev = $("<a>").addClass("ui_pages_prev js_pages_prev").attr("href","javascript:;").html("<i class='fa fa-angle-left'></i>").on("click", function(){
+		this.prev = $("<a>").addClass("ui_pages_prev js_pages_prev").attr("href","javascript:;").html("<i class='fa fa-angle-left'></i>");
 
-			_this.currentNum -= 5;
+		this.next = $("<a>").addClass("ui_pages_next js_pages_next").attr("href","javascript:;").html("<i class='fa fa-angle-right'></i>");
 
-			if(_this.currentNum<0){
-				_this.currentNum = 0;
-			}
-
-			__tab(Math.ceil( _this.currentNum/5 ) );
-
-			console.log(Math.ceil( _this.currentNum/5 ));
-
-		});
-
-		this.next = $("<a>").addClass("ui_pages_next js_pages_next").attr("href","javascript:;").html("<i class='fa fa-angle-right'></i>").on("click", function(){
-
-			_this.currentNum += 5;
-
-			if(_this.currentNum>_this.data.length){
-				_this.currentNum = _this.data.length-_this.data.length%5;
-			}
-
-			__tab(Math.ceil( _this.currentNum/5 ));
-
-			console.log(Math.ceil( _this.currentNum/5 ));
-
-		});
-
-		this.more =  this.len > 5 ? $("<a>").addClass("ui_pages_more js_pages_more").attr("href","javascript:;").html("...").on("click", function(){
-
-			if($(this).next().hasClass("js_pages_next")){
-				
-				var pageFirst = $(this).prev().html()-0;
-
-				console.log( _this.len );
-
-				if(_this.len>(pageFirst+5)){
-
-					_this.pageBox.find(".js_pages_btn").each(function(){
-						
-						$(this).html($(this).html()-0+5);
-
-					});
-
-				}else{
-
-					$(this).insertAfter(_this.prev);
-
-					_this.pageBox.find(".js_pages_btn").each(function(){
-
-						if($(this).html()-1+5>_this.len-1){
-
-							$(this).hide();
-
-						}
-						
-						$(this).html($(this).html()-0+5);
-
-					});
-
-				}
-
-			}else{
-
-				var pageFirst = $(this).next().html()-5;
-
-				if(pageFirst<0){
-					pageFirst = 0;
-				}
-
-				$(this).insertBefore(_this.next);
-
-				_this.pageBox.find(".js_pages_btn").each(function(){
-
-
-					$(this).html($(this).html()-5);
-
-					$(this).show();
-
-				});
-
-			}
-
-			_this.currentNum = _this.pageBox.find(".active").html()-1;
-
-		}) : null;
+		this.more = this.len>5 ? $("<a>").addClass("ui_pages_more js_pages_more").attr("href","javascript:;").html("...") : null;
 
 		if(this.len>1){
 
 			this.pageBox.append(this.prev);
 
-			for(var i=0; i<5; i++){
+			for(var i=0; i<this.len; i++){
 
-				if(i>this.len-1){
-					break;
-				}
-
-
-				var a = $("<a>").addClass("ui_pages_btn js_pages_btn").attr("href","javascript:;").html(i+1).appendTo(this.pageBox).on('click', function(){
-
-					_this.pageBox.find(".js_pages_btn").removeClass('active');
-
-					$(this).addClass("active");
-
-					_this.currentNum = ($(this).html()-1)*5 ;
-
-					_this.draw();
-
-					console.log(_this.currentNum);
-					
-				});
+				var btn = $("<a>").addClass("ui_pages_btn js_pages_btn").attr("href","javascript:;").html(i+1).appendTo(this.pageBox);
 
 				if(i === 0){
-					a.addClass("active")
+					btn.addClass("active")
 				}
 
 			}
@@ -160,9 +53,7 @@ define(function (require, exports, module){
 			this.pageBox.append(this.next);
 
 			if(this.len>5){
-
-				this.more.insertBefore(this.next);
-
+				this.more.insertBefore(this.next)
 			}
 
 		}else{
@@ -171,7 +62,77 @@ define(function (require, exports, module){
 
 		}
 
+		this.events();
+
 	}
+
+	Page.prototype.events = function(){
+
+		var _this = this;
+
+		// prev btn event
+		this.prev.on("click", function (){
+
+			_this.currentNum -= 5;
+
+			if(_this.currentNum<0){
+				_this.currentNum = 0;
+			}
+
+			_this.tab(Math.ceil( _this.currentNum/5 ));
+
+		});
+
+		// next btn event
+		this.next.on("click", function (){
+
+			_this.currentNum += 5;
+
+			if(_this.currentNum>_this.data.length){
+				_this.currentNum = _this.data.length-_this.data.length%5;
+			}
+
+			_this.tab(Math.ceil( _this.currentNum/5 ));
+
+		})
+
+		// common btn event
+		this.pageBox.find(".js_pages_btn").each(function(i){
+
+			$(this).on("click", function (){
+
+				_this.pageBox.find(".js_pages_btn").removeClass('active');
+
+				$(this).addClass("active");
+
+				_this.currentNum = i*5;
+
+				_this.draw();
+
+			});
+
+		});
+
+		// more btn event
+		this.more.on("click", function(){
+
+
+
+		})
+
+	}
+
+	Page.prototype.tab = function(num){
+
+		this.draw();
+
+		var btnsNum = this.pageBox.find(".js_pages_btn");
+
+		btnsNum.removeClass("active").eq(num).addClass("active");
+
+	}
+
+
 
 
 	Page.prototype.draw = function(){
