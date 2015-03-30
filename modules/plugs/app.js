@@ -18,6 +18,8 @@ define(function (require, exports, module){
 
 	var Page = require("plugs/pages");
 
+	var Select = require("plugs/select");
+
 
 	var data = ['{"title": "CSS样式规范一","date": "2014-05-16 11:11:15","categories" : "css1"}<<====>>## 1元素分类(常规) ',
 				'{"title": "CSS样式规范一","date": "2014-05-16 11:11:15","categories" : "css2"}<<====>>## 1元素分类(常规) ',
@@ -115,7 +117,7 @@ define(function (require, exports, module){
 
 		page.draw();
 
-		console.log(data.length);
+		var select = new Select($(".js_select_box"));
 
 		$(".js_dialog_1").on('click', function(){
 

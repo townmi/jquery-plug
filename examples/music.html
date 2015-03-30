@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>foot</title>
+	<link rel="stylesheet" type="text/css" href="./css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./css/music.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+</head>
+<body>
+	<div class="ui_music_box">
+		<div class="ui_music_"></div>
+		<div>
+			<a href="javascript:;" class="ui_music_control">
+				<i class="fa fa-backward"></i>
+			</a>
+			<a href="javascript:;" class="ui_music_control">
+				<i class="fa fa-play"></i>
+			</a>
+			<a href="javascript:;" class="ui_music_control">
+				<i class="fa fa-forward"></i>
+			</a>
+			<a href="javascript:;" class="ui_music_control">
+				<i class="fa fa-random"></i>
+			</a>
+		</div>
+		<div>
+			
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="../seajs/sea.js"></script>
+<script type="text/javascript">
+
+	seajs.config({
+
+		// 配置基础路径，内部模块的依赖，不再需要全局去配置路径
+		base: "../modules/",
+
+		// 系统公用模块，直接依赖
+		alias: {
+     		"jquery": "src/jquery.js"
+    	}
+
+	});
+
+	seajs.use("../modules/plugs/app", function(fn){
+		
+		// app 启动器
+
+		fn();
+
+	});
+
+</script>
+</html>

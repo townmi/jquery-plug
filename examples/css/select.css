@@ -16,21 +16,24 @@
 	width: 208px;
 	height: 24px;
 	border: 1px solid #e6e6e6;
-	border-radius: 2px 2px 0 0;
+	border-radius: 3px;
 	background-color: #ffffff;
+	overflow: hidden;
 }
 .ui_select_input{
 	width: 84%;
-	border: none;
 	height: 20px;
 	padding: 2px 2%;
+	border: none;
+	font-size: 14px;
 }
 .ui_select_btn{
 	width: 12%;
 	line-height: 24px;
 	text-align: center;
 	font-size: 16px;
-	color: #333333;
+	background-color: #e4e4e4;
+	color: #3d3d3d;
 }
 .ui_select_btn:hover{
 	color: #ffffff;
@@ -50,4 +53,14 @@
 	height: 20px;
 	padding: 2px 2%;
 	border-bottom: 1px solid #e6e6e6;
+	color: #000000;
+	background-color: #ffffff;
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+.ui_select_body li:hover{
+	background-color: #157efb;
+	color: #ffffff;
+	cursor: pointer;
 }

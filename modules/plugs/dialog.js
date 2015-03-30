@@ -1,3 +1,4 @@
+// 'use strict';
 /*
 * author : towne
 * version : 0.0.1
@@ -11,7 +12,7 @@ define(function (require, exports, module){
 
 	function Dialog (config){
 
-		_this = this;
+		var _this = this;
 
 		var config = $.extend(true, {
 			module : {
