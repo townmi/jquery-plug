@@ -452,7 +452,18 @@
         }
 
     });
-    seajs.use("apps/admin.js")
+    seajs.use("apps/admin.js");
 
+    // echarts 不支持CMD 暴露jquery
+    seajs.use("jquery");
+
+</script>
+<script src="../../dev/js/libs/echarts.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        ...
+    }
+    myChart.setOption(option);
 </script>
 </html>
