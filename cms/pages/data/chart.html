@@ -249,7 +249,7 @@
                         <li><a href="#" class="fn-ms"><i class="fa fa-gear fa-fw"></i> 修改信息</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="authen/login.html" class="fn-ms"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                        <li><a href="../authen/login.html" class="fn-ms"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -427,6 +427,59 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading fn-ms">
+                                饼图案例
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart" style="height:500px;">
+                                    <div class="flot-chart-content" id="multi-chart1" style='height:230px;margin-bottom:1px;padding-bottom:0;border-bottom-width:0'></div>
+                                    <div class="flot-chart-content" id="multi-chart2" style='height:145px;margin-bottom:1px;padding:1px 0px;border-width:0 1px;'></div>
+                                    <div class="flot-chart-content" id="multi-chart3" style='height:105px;padding-top:1px;border-top-width:0'></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading fn-ms">
+                                折线案例
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="line-chart"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading fn-ms">
+                                柱状案例
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="line2-chart"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -437,7 +490,7 @@
 
 </body>
 <script src="../../dev/js/src/cmd.js"></script>
-
+<script src="../../dev/js/libs/echarts-all.js"></script>
 <script type="text/javascript">
 
     seajs.config({
@@ -454,16 +507,7 @@
     });
     seajs.use("apps/admin.js");
 
-    // echarts 不支持CMD 暴露jquery
-    seajs.use("jquery");
+    seajs.use("apps/data_charts.js");
 
-</script>
-<script src="../../dev/js/libs/echarts.js"></script>
-<script>
-    var myChart = echarts.init(document.getElementById('main'));
-    var option = {
-        ...
-    }
-    myChart.setOption(option);
 </script>
 </html>
