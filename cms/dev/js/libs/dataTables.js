@@ -13881,7 +13881,7 @@ define(function(require, exports, module){
 			/* Features */
 			"sWrapper": "dataTables_wrapper",
 			"sFilter": "dataTables_filter",
-			"sInfo": "dataTables_info",
+			"sInfo": "dataTables_info fn-ms",
 			"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
 			"sLength": "dataTables_length",
 			"sProcessing": "dataTables_processing",

@@ -1,9 +1,7 @@
 define(function(require, exports, module){
 
     var $ = require("jquery");
-    var metisMenu = require("libs/metisMenu.min.js");
-
-    console.log($.fn);
+    var metisMenu = require("libs/metisMenu.js");
     
     $(function() {
 

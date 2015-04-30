@@ -312,3 +312,10 @@ div.FixedHeader_Cloned table {
 	margin: 0 !important
 }
 
+.dataTables_info span{
+	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+	color: #cc0000;
+}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+	border-bottom-width: 1px;
+}
