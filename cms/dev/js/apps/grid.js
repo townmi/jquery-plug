@@ -9,16 +9,6 @@ define(function(require, exports, module){
     $(document).ready(function() {
     	
         $('#dataTables-example').DataTable({
-        	"processing": true,
-        	"serverSide": true,
-        	"ajax": {
-	            "url": "../../data.php",
-	            "data": function ( d ) {
-	                d.myKey = "myValue";
-	                // d.custom = $('#myInput').val();
-	                // etc
-	            }
-	        }
         });
 		
 
