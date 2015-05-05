@@ -438,21 +438,10 @@
 
 </body>
 <script src="../../dev/js/src/cmd.js"></script>
-
+<script src="../../dev/js/src/config.js"></script>
 <script type="text/javascript">
 
-    seajs.config({
-
-        // 配置基础路径，内部模块的依赖，不再需要全局去配置路径
-        base: "../../dev/js/",
-
-        // 系统公用模块，直接依赖
-        alias: {
-            "jquery": "src/jquery.min.js",
-            "bootstrap": "libs/bootstrap.min.js"
-        }
-
-    });
+    // apps
     seajs.use("apps/admin.js")
 
 </script>

@@ -4,11 +4,9 @@ define(function(require, exports, module){
 
 	var moment = require("moment");
 
-	// console.log(moment)
-
 	var daterangepicker = require("daterangepicker")(moment, $);
 
-	$('#reservationtime').daterangepicker({
+	$('.two_date').daterangepicker({
 		timePicker: true,
 		timePickerIncrement: 30,
 		format: 'MM/DD/YYYY h:mm A'

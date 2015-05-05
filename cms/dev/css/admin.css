@@ -211,7 +211,7 @@ body {
 }
 
 .login-panel {
-    margin-top: 25%;
+    margin-top: 35%;
 }
 
 .flot-chart {
@@ -354,7 +354,21 @@ table.dataTable thead .sorting:after {
 }
 
 
+/*townmi*/
 .fn-ms{
     font-weight: 200;
     font-family: "Microsoft Yahei";
+}
+.ui_login{
+    height: 100%;
+    background: -webkit-linear-gradient(left top, #5cb85c, white);
+    background: -moz-linear-gradient(left top, #5cb85c, white);
+    background: -o-linear-gradient(left top, #5cb85c, white);
+    background: linear-gradient(left top, #5cb85c, white);
+}
+.panel-default>.panel-heading-func, .panel-heading-func{
+    padding: 5px 15px 5px 0;
+}
+.panel-heading-title{
+    line-height: 30px;
 }

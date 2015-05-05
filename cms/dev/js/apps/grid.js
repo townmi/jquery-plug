@@ -9,6 +9,13 @@ define(function(require, exports, module){
     $(document).ready(function() {
     	
         $('#dataTables-example').DataTable({
+        	"columns": [
+			    null,
+			    null,
+			    { "orderable": false, "targets": 0 },
+			    { "orderable": false, "targets": 0 },
+			    null
+			]
         });
 		
 
