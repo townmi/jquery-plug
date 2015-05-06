@@ -447,6 +447,10 @@
                                     <div class="col-lg-12">
                                         <form role="form">
                                             <div class="form-group col-lg-3">
+                                                <label>交易状态</label>
+                                                <div id="multi_select" style="position:relative;"></div>
+                                            </div>
+                                            <div class="form-group col-lg-3">
                                                 <label>交易单号</label>
                                                 <input class="form-control" placeholder="请输入交易单号">
                                             </div>
@@ -561,9 +565,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
-                                            
                                             <div class="form-group col-lg-9">
                                                 <label>交易状态</label>
                                                 <div>
@@ -622,6 +624,7 @@
     // apps
     seajs.use("apps/admin.js");
     seajs.use("apps/date_two.js");
+    seajs.use("apps/multiSel.js")
 
 </script>
 </html>
