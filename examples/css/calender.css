@@ -13,6 +13,7 @@
 	position: absolute;
 	left: 0;
 	top: 10px;
+	display: none;
 }
 /*title*/
 .ui_calendar_title{
@@ -36,29 +37,29 @@
 }
 .ui_calendar_title .ui_prev_year{
 	left: 0;
-	background: url(../images/l_0.png) 15px 16px no-repeat;
+	background: url(./static/images/l_0.png) 15px 16px no-repeat;
 	border-right: 1px solid #bf0000;
 }
 .ui_calendar_title .ui_prev_month{
 	left: 41px;
-	background: url(../images/l_0.png) 15px 16px no-repeat;
+	background: url(./static/images/l_0.png) 15px 16px no-repeat;
 	border-left: 1px solid #d52e2e;
 }
 .ui_calendar_title .ui_next_month{
 	right: 41px;
-	background: url(../images/r_0.png) 15px 16px no-repeat;
+	background: url(./static/images/r_0.png) 15px 16px no-repeat;
 	border-right: 1px solid #d52e2e;
 }
 .ui_calendar_title .ui_next_year{
 	right: 0;
-	background: url(../images/r_0.png) 15px 16px no-repeat;
+	background: url(./static/images/r_0.png) 15px 16px no-repeat;
 	border-left: 1px solid #bf0000;
 }
 .ui_calendar_title .ui_prev_year:hover, .ui_calendar_title .ui_prev_month:hover{
-	background: url(../images/l_1.png) 15px 16px no-repeat;
+	background: url(./static/images/l_1.png) 15px 16px no-repeat;
 }
 .ui_calendar_title .ui_next_year:hover, .ui_calendar_title .ui_next_month:hover{
-	background: url(../images/r_1.png) 15px 16px no-repeat;
+	background: url(./static/images/r_1.png) 15px 16px no-repeat;
 }
 .ui_calendar_body{
 	background-color: #fbf8f1;

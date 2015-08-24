@@ -9,6 +9,7 @@ define(function(require, exports, module){
     $(document).ready(function() {
     	
         $('#dataTables-example').DataTable({
+            "scrollX": true,
         	"columns": [
 			    null,
 			    null,
