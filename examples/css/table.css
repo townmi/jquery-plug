@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+ * author : towne
+ * version : 0.0.1
+ * date : 2015.2.10
+ *
+*/
+
+
+.ui_table{
+
+}
+.ui_table>thead>tr>th{
+	border-bottom-width: 1px;
+}
+.ui_table>thead>tr>th.ui_sort{
+	padding-right: 20px;
+	position: relative;
+	background-color: #fff
+}
+.ui_table>thead>tr>th.ui_sort:after{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 10px
+	top: 50%;
+	background-color: #333
+}
+.ui_table>thead>tr>th.ui_select{
+	position: relative;
+}
+.ui_table_select{
+	position: absolute;
+	width: 150px;
+}
