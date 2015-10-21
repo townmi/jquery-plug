@@ -1,15 +1,14 @@
 'use strict';
-/*
- * author : towne
- * version : 0.0.3
- * for : calendar
- * date : 2015.2.6
- *
-*/
 
-define(function (require, exports, module){
+/**
+ * [calendar->$.plugin]
+ * @description [日历插件]
+ * @author [haixiangtang@creditease.cn]
+ * @version [0.0.3]
+ * @date [2015-02-12]
+ */
 
-    var $ = jQuery = require("jquery");
+$.fn.calendar = function () {
 
     function Calendar(parent, currDate, beginDate, endDate, disableDate){
 
@@ -227,4 +226,4 @@ define(function (require, exports, module){
 
     module.exports = Calendar;
 
-})
+}

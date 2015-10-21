@@ -1,9 +1,11 @@
 'use strict';
-/*
- * author : towne
- * version : 0.0.1
- * date : 2014.10.23
- *
+
+/**
+ * [carouselFade->$.plugin]
+ * @description [轮播渐变插件]
+ * @author [haixiangtang@creditease.cn]
+ * @version [0.0.1]
+ * @date [2015-01-10]
  */
 
 jQuery.fn.carouselFade = function (){

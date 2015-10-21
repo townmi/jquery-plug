@@ -3,39 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>pages</title>
-	<link rel="stylesheet" type="text/css" href="./css/reset.css">
-	<link rel="stylesheet" type="text/css" href="./css/pages.css">
-	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/tg.css">
 </head>
 <body>
 	<ul class="js_cont">
 		
 	</ul>
-	<div class="ui_pages js_pages">
-	</div>
+	<div id="js_page" class="ui_page_group"></div>
 </body>
-<script type="text/javascript" src="../seajs/sea.js"></script>
+<script type="text/javascript" src="../src/jquery.js"></script>
+<script type="text/javascript" src="../src/jquery-page.js"></script>
 <script type="text/javascript">
-
-	seajs.config({
-
-		// 配置基础路径，内部模块的依赖，不再需要全局去配置路径
-		base: "../modules/",
-
-		// 系统公用模块，直接依赖
-		alias: {
-     		"jquery": "src/jquery.js"
-    	}
-
-	});
-
-	seajs.use("../modules/plugs/app", function(fn){
-		
-		// app 启动器
-
-		fn();
-
-	});
-
+	$(function () {
+		$("#js_page").page();
+	})
 </script>
 </html>

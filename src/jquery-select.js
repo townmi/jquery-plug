@@ -1,14 +1,14 @@
 'use strict';
-/*
-* author  : towne
-* version : 0.0.1
-* date	  : 2015.2.10
-*
-*/
 
-define(function (require, exports, module){
+/**
+ * [select->$.plugin]
+ * @description [下拉选框插件]
+ * @author [haixiangtang@creditease.cn]
+ * @version [0.0.1]
+ * @date [2015-09-01]
+ */
 
-	var $ = jQuery = require("jquery");
+$.fn.select = function () {
 
 	function Select(parent){
 
@@ -106,6 +106,4 @@ define(function (require, exports, module){
 
 	}
 
-	module.exports = Select;
-
-})
+}

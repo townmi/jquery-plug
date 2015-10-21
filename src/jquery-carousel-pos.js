@@ -1,10 +1,13 @@
 'use strict';
-/*
- * author : towne
- * version : 0.0.1
- * date : 2014.10.23
- *
+
+/**
+ * [carouselPos->$.plugin]
+ * @description [轮播滚动插件]
+ * @author [haixiangtang@creditease.cn]
+ * @version [0.0.2]
+ * @date [2015-09-01]
  */
+
 jQuery.fn.carouselPos = function (){
 	// 图片转换
 	bestImg();
@@ -83,4 +86,3 @@ jQuery.fn.carouselPos = function (){
 		})
 	}
 }
-$(window).carouselPos();

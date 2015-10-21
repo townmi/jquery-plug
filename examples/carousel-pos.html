@@ -3,121 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>carousel-pos</title>
-	<style type="text/css">
-		body,h1,h2,h3,h4,h5,h6,p,dl,dd{
-			margin: 0; 
-			font-size: 12px;
-			padding: 0; 
-			font-family: "arial";
-		}
-		ol,ul{
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-		a{
-			text-decoration: none;
-			cursor: pointer;
-		}
-		img{
-			border: none;
-			vertical-align: top;
-		}
-		form{
-			margin: 0;
-		}
-		input{
-			margin: 0; 
-			padding: 0;
-		} 
-		select{
-			margin: 0;
-		}
-		textarea{
-			margin: 0; 
-			padding: 0; 
-			resize: none; 
-			overflow: auto; 
-			outline: none;
-		}
-		.mar{
-			height: 250px;
-		}
-		.mar1{
-			height: 20px;
-		}
-		.carousel{
-			width: 100%;
-			height: 450px;
-			position: relative;
-			overflow: hidden;
-		}
-		.carousel2{
-			width: 500px;
-			height: 200px;
-		}
-		.carousel ul, .carousel li, .carousel a{
-			width: 100%;
-			height: 100%;
-		}
-		.carousel ul{
-			position: absolute;
-			left: 0;
-			top: 0;
-		}
-		.carousel li{
-			float: left;
-			overflow: hidden;
-		}
-		.carousel a{
-		 	display: inline-block;
-		 	width: 100%;
-		 	height: 100%;
-		 	background-position: center center;
-		 	background-repeat: no-repeat;
-		}
-		.carousel img{
-			display: none;
-		}
-		.carousel .car_btn{
-			position: absolute;
-			width: 100%;
-			bottom: 8.8%;
-			text-align: center;
-			z-index: 4;
-		}
-		.carousel .car_btn span{
-			display: inline-block;
-			width: 20px;
-			height: 20px;
-			background-color: #00FFFF;
-			line-height: 20px;
-			border-radius: 10px;
-			cursor: pointer;
-			margin: 0 5px;
-		}
-		.carousel .car_btn span.active{
-			background-color: yellow;
-		}
-		.carousel .prev, .carousel .next{
-			position: absolute;
-			top: 50%;
-			z-index: 5;
-			width: 40px;
-			height: 200px;
-			margin-top: -100px;
-			background-color: red;
-			display: none;
-		}
-		.carousel .prev{
-			left: 50%;
-			margin-left: -40%;
-		}
-		.carousel .next{
-			right: 50%;
-			margin-right: -40%;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/tg.css">
 </head>
 <body>
 	<!-- 
@@ -126,7 +12,7 @@
 
 	 -->
 	<div class="mar1"></div>
-	<div class="carousel carousel1" carouselPos="2000" pos="easing">
+	<div class="carousel carousel1 ui_carousel_pos" carouselPos="2000" pos="easing">
 		<ul>
 			<li class='active'>
 				<a href="http://toumi.yixin.com/" target="_blank">

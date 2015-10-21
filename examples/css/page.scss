@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**
+ * [page->css]
+ * @author [haixiangtang@creditease.cn]
+ * @version [0.0.2]
+ * @date [2015-10-22]
+ */
+.ui_page_group{
+    padding-top: 30px;
+    font-family: Courier, "Microsoft Yahei";
+    .ui_btn {
+        display: inline-block;
+        line-height: 28px;
+        padding: 0 12px;
+        border: 1px solid #eeeeee;
+        background-color: #ffffff;
+        color: #3F51B5;
+    }
+    a.active,.ui_btn:hover {
+        background-color: #3F51B5;
+        color: #ffffff;
+    }
+    .ui_btn:nth-child(1), .ui_first {
+        @include border-radius(3px 0 0 3px);
+    }
+    .ui_btn:nth-last-child(1), .ui_last {
+        @include border-radius(0 3px 3px 0);
+    }
+
+    .ui_disabled {
+        background-color: #7A7A7A;
+        color: #ffffff;
+    }
+    .ui_disabled:hover {
+        background-color: #7A7A7A;
+    }
+}
