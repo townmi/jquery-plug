@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**
+ * [svg->css]
+ * @author [haixiangtang@creditease.cn]
+ * @version [0.0.2]
+ * @date [2015-10-22]
+ */
+
+.mobile_chart {
+	padding-top: 40px;
+	padding-left: 50px;
+	position: relative;
+	svg {
+		height: 150px;
+	}
+	.x_axis, .y_axis {
+		position: absolute;
+		font-size: 13px;
+	}
+	.x_axis {
+		bottom: -12px;
+		left: 40px;
+		span {
+			margin: 0 1px;
+		}
+	}
+	.y_axis {
+		width: 30px;
+		left: 10px;
+		top: 30px;
+		span {
+			display: block;
+			width: 100%;
+			line-height: 24px;
+			height: 24px;
+			text-align: right;
+		}
+	}
+}
+.mobile_chart_title {
+	position: absolute;
+	left: 12px;
+	top: 12px;
+	font-size: 14px;
+}
