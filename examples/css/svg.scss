@@ -10,25 +10,27 @@
 
 .mobile_chart {
 	padding-top: 40px;
-	padding-left: 50px;
+	padding-bottom: 20px;
+	padding-left: 40px;
 	position: relative;
+	overflow: hidden;
 	svg {
-		height: 150px;
 	}
 	.x_axis, .y_axis {
 		position: absolute;
 		font-size: 13px;
-	}
-	.x_axis {
-		bottom: -12px;
-		left: 40px;
 		span {
-			margin: 0 1px;
+			position: absolute;
 		}
 	}
+	.x_axis {
+		width: 100%;
+		height: 20px;
+		bottom: 0;
+	}
 	.y_axis {
-		width: 30px;
-		left: 10px;
+		width: 35px;
+		left: 7px;
 		top: 30px;
 		span {
 			display: block;
@@ -36,6 +38,32 @@
 			line-height: 24px;
 			height: 24px;
 			text-align: right;
+		}
+	}
+	.ui_rate {
+		height: 24px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		padding: 0 5px;
+		line-height: 24px;
+		font-size: 14px;
+		color: #ffffff;
+		@include border-radius(4px);
+		background-color: #ff5500;
+		// -moz-transition: -moz-transform, .6s, ease-in-out;         	/* Gecko browsers */
+	 //    -webkit-transition: -webkit-transform, .6s, ease-in-out;    /* Webkit browsers */
+	 //    -ms-transition: -ms-transform, .6s, ease-in-out;          	/* IE 9 */
+	 //    -o-transition: -o-transform, .6s, ease-in-out;           	/* Opera */ 
+	 //    transition: transform, .6s, ease-in-out;
+		@include transition(all, .6s, ease-in-out);
+		span {
+			height: 20px;
+			position: absolute;
+			left: 50%;
+			margin-left:-5px;
+			bottom: -8px;
+			color: #ff5500;
 		}
 	}
 }

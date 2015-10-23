@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<div class="mobile_chart">
+	<!-- <div class="mobile_chart">
 		<h2 class="mobile_chart_title">当日年华收益率走势图</h2>
 		<div class="x_axis">
 			<span>10-01</span>
@@ -34,7 +34,7 @@
 			<span>7.50</span>
 			<span>7.00</span>
 		</div>
-		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="92%">
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="92%" height="150">
 			<line x1="6" y1="1" x2="97%" y2="1" style="stroke:rgb(58,58,58);stroke-width:1"/>
 			<line x1="6" y1="16%" x2="97%" y2="16%" style="stroke:rgb(58,58,58);stroke-width:1"/>
 			<line x1="6" y1="32%" x2="97%" y2="32%" style="stroke:rgb(58,58,58);stroke-width:1"/>
@@ -49,7 +49,7 @@
 			<line x1="66%" y1="1" x2="66%" y2="96%" style="stroke:rgb(58,58,58);stroke-width:1"/>
 			<line x1="82%" y1="1" x2="82%" y2="96%" style="stroke:rgb(58,58,58);stroke-width:1"/>
 			<line x1="97%" y1="1" x2="97%" y2="96%" style="stroke:rgb(58,58,58);stroke-width:1"/>
-			<!-- <polyline points="6,100 45,120 60,100 80,100 120,100 200,100" style="fill:none;stroke:red;stroke-width:2" /> -->
+			<polyline points="6,100 45,120 60,100 80,100 120,100 200,100" style="fill:none;stroke:red;stroke-width:2" />
 
 			<line x1="6" y1="64%" x2="18%" y2="57%" x3="34%" y3="37%" style="stroke:red;stroke-width:2"/>
 			<circle cx="6" cy="64%" r="5" stroke="red" stroke-width="2" fill="white"/>
@@ -61,7 +61,7 @@
 			<circle cx="97%" cy="54%" r="5" stroke="red" stroke-width="2" fill="white"/>
 
 		</svg>
-	</div>
+	</div> -->
 	<br>	<br>
 	<div class="mobile_chart" id="js_chart">
 		
@@ -76,11 +76,6 @@
 		
 	var intChart = function () {
 
-		var DEVICEWIDTH = window.innerWidth;
-
-		var SVGWIDTH = DEVICEWIDTH - 60;
-		var SVGHEIGHT = Math.ceil((SVGWIDTH/2)/10)*10;
-
 		var data = [
 			{"date": "10-01", "rate": "8.01"},
 			{"date": "10-02", "rate": "8.20"},
@@ -91,16 +86,29 @@
 			{"date": "10-07", "rate": "8.25"},
 		];
 
+		var DEVICE_WIDTH = window.innerWidth;
+
+		var SVG_WIDTH = DEVICE_WIDTH - 50;
+		var SVG_HEIGHT = Math.ceil((SVG_WIDTH/2)/9)*10;
+		var SVG_START_XAXIS = SVG_WIDTH/(data.length)/2;
+		var SVG_XAXIS_STEP = SVG_WIDTH/(data.length);
+
+		
+		var SVG_START_YAXIS = 1;
+		var SVG_YAXIS_STEP = (SVG_HEIGHT-2)/(data.length-1);
+
+		console.log(SVG_YAXIS_STEP)
+
 		var rateArray = [];
 
 		for (var i = 0; i < data.length; i++) {
-			rateArray.push(data[i].rate*1);
+			rateArray.push(data[i].rate*1)
 		};
 
 		rateArray.sort();
 
 		var start_y = Math.floor(rateArray[0]-1);
-		var end_y = Math.ceil(rateArray[rateArray.length-1]+1);
+		var end_y = Math.floor(rateArray[rateArray.length-1]+1);
 
 		console.log(rateArray[0]-1, start_y, rateArray[rateArray.length-1]+1, end_y);
 
@@ -112,19 +120,74 @@
 			yAxisHtml = '<div class="y_axis">';
 
 		for(var i = 0; i < data.length-1; i++) {
-			xAxisHtml += '<span>'+data[i].date+'</span>';
-			yAxisHtml += '<span>'+(end_y-i*step).toFixed(2)+'</span>';
+			xAxisHtml += '<span style="left:'+Math.ceil(i*SVG_XAXIS_STEP+SVG_START_XAXIS-16)+'px;">'+data[i].date+'</span>';
+			yAxisHtml += '<span style="top:'+Math.ceil(i*SVG_YAXIS_STEP)+'px;">'+(end_y-i*step).toFixed(2)+'</span>';
 		}
 
-		xAxisHtml += '<span>'+data[data.length-1].date+'</span></div>';
-		yAxisHtml += '<span>'+start_y.toFixed(2)+'</span></div>';
+		xAxisHtml += '<span style="left:'+Math.ceil((data.length-1)*SVG_XAXIS_STEP+SVG_START_XAXIS-16)+'px;">'+data[data.length-1].date+'</span></div>';
+		yAxisHtml += '<span style="top:'+Math.ceil((data.length-1)*SVG_YAXIS_STEP)+'px;">'+start_y.toFixed(2)+'</span></div>';
 
-		chart.innerHTML = '<h2 class="mobile_chart_title">当日年华收益率走势图</h2>'+xAxisHtml+yAxisHtml+'<svg width="'+SVGWIDTH+'" height="'+SVGHEIGHT+'"></svg>';
+		var xLine = "", yLine = "", polyLine = '<polyline points="', circle = "", circle2 = "", path = '<path id="glow" filter="url(#blur-filter);" fill="none" stroke-width="2" stroke-miterlimit="10" stroke="#4dbeee" d="m';
+		var filter = '<filter id="blur-filter" x="0" y="" width="200" height="200"><feGaussianBlur in="SourceGraphic" stdDeviation="2" /></filter>';
+
+		for(var i = 0; i < data.length; i++) {
+			xLine += '<line i="'+i+'" x1="'+SVG_START_XAXIS+'" y1="'+(SVG_START_YAXIS+i*SVG_YAXIS_STEP)+'" x2="'+(SVG_START_XAXIS+(data.length-1)*SVG_XAXIS_STEP)+'" y2="'+(SVG_START_YAXIS+i*SVG_YAXIS_STEP)+'" style="stroke:rgb(58,58,58);stroke-width:1"/>';
+			yLine += '<line i="'+i+'" x1="'+(SVG_START_XAXIS+i*SVG_XAXIS_STEP)+'" y1="'+SVG_START_YAXIS+'" x2="'+(SVG_START_XAXIS+i*SVG_XAXIS_STEP)+'" y2="'+(SVG_START_YAXIS+(data.length-1)*SVG_YAXIS_STEP)+'" style="stroke:rgb(58,58,58);stroke-width:1"/>';
+			if(i!=0){
+				polyLine += ' ';
+				path += ' L';
+			}
+			var pointXAxis = Math.floor(SVG_START_XAXIS+i*SVG_XAXIS_STEP);
+			var pointYAxis = Math.floor((end_y-(data[i].rate*1))/(end_y-start_y)*(SVG_HEIGHT-2));
+
+			// polyLine += pointXAxis+','+pointYAxis;
+
+			path +=pointXAxis+' '+pointYAxis;
+
+			circle += '<circle cx="'+pointXAxis+'" cy="'+pointYAxis+'" r="5" stroke="red" stroke-width="2" fill="white"/>';
+
+			circle2 += '<circle class="js_touch_show_rate" cx="'+pointXAxis+'" cy="'+pointYAxis+'" c_plus="'+(pointXAxis+20)+'" r="25" stroke="none" stroke-width="25" fill="rgba(255, 255, 255, 0.1)" content="'+data[i].rate+'"/>';
+			
+		}
+
+		path += '"/>';
+
+		polyLine +='" style="fill:none;stroke:red;stroke-width:2"/>';
+
+		chart.innerHTML = '<h2 class="mobile_chart_title">当日年华收益率走势图</h2>'+xAxisHtml+yAxisHtml+'<svg width="'+SVG_WIDTH+'" height="'+SVG_HEIGHT+'">'+filter+xLine+yLine+path+circle+circle2+'</svg><div class="ui_rate" id="js_rate" style="display: none;">9.00<span>◆</span></div>';
 
 	}
 
 	
 	intChart();
 </script>
+<script type="text/javascript">
+	
+	var ratePoint = document.getElementsByClassName('js_touch_show_rate');
 
+	var rateShow = document.getElementById('js_rate');
+
+	for (var i = 0; i < ratePoint.length; i++) {
+		ratePoint[i].onclick = function () {
+			rateShow.style.display = "block";
+
+			;
+
+			rateShow.innerHTML = this.getAttribute('content')+'<span>◆</span>';
+			// rateShow.style.left = +"px";
+			// rateShow.style.top = +"px";
+
+			rateShow.style.transform = 'translate('+this.getAttribute('c_plus')+'px,'+this.getAttribute('cy')+'px)';
+			rateShow.style['-moz-transform'] = 'translate('+this.getAttribute('c_plus')+'px,'+this.getAttribute('cy')+'px)';
+			rateShow.style['-webkit-transform']= 'translate('+this.getAttribute('c_plus')+'px,'+this.getAttribute('cy')+'px)';
+			rateShow.style['-ms-transform'] = 'translate('+this.getAttribute('c_plus')+'px,'+this.getAttribute('cy')+'px)';
+			rateShow.style['-0-transform'] = 'translate('+this.getAttribute('c_plus')+'px,'+this.getAttribute('cy')+'px)';
+		}
+	};
+
+	function trans (s) {
+		return '-moz-transform: '+s+'; -webkit-transform: '+s+';-ms-transform: '+s+';-o-transform: '+s+';transform: '+s+';'
+	}
+
+</script>
 </html>
